@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interior Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hero-shell">
+    <nav class="navbar navbar-expand-lg glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand nav-link-set" href="#home">Studio</a>
+
+        <a class="brand-mark mx-auto" href="#home" aria-label="Interior Atelier home">
+          <span class="brand-ring"></span>
+          <span class="brand-text">IA</span>
+        </a>
+
+        <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center gap-lg-2 ms-auto">
+            <li class="nav-item"><a class="nav-link nav-link-set" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-set" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-set" href="#about">About</a></li>
+            <li class="nav-item ms-lg-3">
+              <a class="btn consult-btn" href="#contact">Book Consultation</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header id="home" class="hero-section d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center min-vh-100">
+          <div class="col-lg-7">
+            <p class="eyebrow">Luxury Interior Design Portfolio</p>
+            <h1>Spaces that feel curated, calm, and unforgettable.</h1>
+            <p class="hero-copy">
+              Interior Atelier crafts residential and boutique commercial environments with layered textures,
+              refined materials, and a timeless editorial finish.
+            </p>
+            <div class="hero-actions d-flex flex-wrap gap-3">
+              <a href="#projects" class="btn hero-btn-primary">View Portfolio</a>
+              <a href="#contact" class="btn hero-btn-secondary">Start a Project</a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="banner-slider">
+              <div class="slider-track">
+                <article class="slide-item is-active">
+                  <div class="slide-visual tone-one">
+                    <div class="visual-badge">01</div>
+                  </div>
+                  <div class="slide-content">
+                    <span class="card-label">Featured Concept</span>
+                    <h2>Modern Warmth</h2>
+                    <p>Stone textures, sculptural lighting, muted oak finishes, and tailored lounge geometry.</p>
+                    <!-- <div class="feature-meta">
+                      <div>
+                        <strong>12</strong>
+                        <span>Signature Projects</span>
+                      </div>
+                      <div>
+                        <strong>8</strong>
+                        <span>Design Awards</span>
+                      </div>
+                      <div>
+                        <strong>5k</strong>
+                        <span>Sq Ft Reimagined</span>
+                      </div>
+                    </div> -->
+                  </div>
+                </article>
+
+                <article class="slide-item">
+                  <div class="slide-visual tone-two">
+                    <div class="visual-badge">02</div>
+                  </div>
+                  <div class="slide-content">
+                    <span class="card-label">New Arrival</span>
+                    <h2>Soft Minimal</h2>
+                    <p>Curved silhouettes, light travertine, airy neutrals, and quiet luxury for urban living.</p>
+                    <!-- <div class="feature-meta">
+                      <div>
+                        <strong>18</strong>
+                        <span>Custom Layouts</span>
+                      </div>
+                      <div>
+                        <strong>24</strong>
+                        <span>Material Boards</span>
+                      </div>
+                      <div>
+                        <strong>96%</strong>
+                        <span>Client Satisfaction</span>
+                      </div>
+                    </div> -->
+                  </div>
+                </article>
+
+                <article class="slide-item">
+                  <div class="slide-visual tone-three">
+                    <div class="visual-badge">03</div>
+                  </div>
+                  <div class="slide-content">
+                    <span class="card-label">Portfolio Highlight</span>
+                    <h2>Bold Contrast</h2>
+                    <p>Dark timber, brushed brass, sculpted seating, and gallery-inspired focal compositions.</p>
+                    <!-- <div class="feature-meta">
+                      <div>
+                        <strong>9</strong>
+                        <span>Luxury Residences</span>
+                      </div>
+                      <div>
+                        <strong>14</strong>
+                        <span>Bespoke Pieces</span>
+                      </div>
+                      <div>
+                        <strong>3</strong>
+                        <span>Global Features</span>
+                      </div>
+                    </div> -->
+                  </div>
+                </article>
+              </div>
+
+              <div class="slider-controls">
+                <button class="slider-arrow slider-prev" type="button" aria-label="Previous slide">
+                  <span>&larr;</span>
+                </button>
+                <div class="slider-dots" aria-label="Slider pagination">
+                  <button class="slider-dot is-active" type="button" data-slide="0" aria-label="Go to slide 1"></button>
+                  <button class="slider-dot" type="button" data-slide="1" aria-label="Go to slide 2"></button>
+                  <button class="slider-dot" type="button" data-slide="2" aria-label="Go to slide 3"></button>
+                </div>
+                <button class="slider-arrow slider-next" type="button" aria-label="Next slide">
+                  <span>&rarr;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <section id="projects" class="content-block portfolio-section">
+    <div class="container">
+      <div class="portfolio-head reveal-on-scroll">
+        <div class="row align-items-end g-4">
+          <div class="col-lg-7">
+            <p class="section-tag">Portfolio</p>
+            <h2>Signature interiors designed to feel warm, tactile, and visually unforgettable.</h2>
+          </div>
+          <div class="col-lg-5">
+            <p class="portfolio-copy">
+              Explore selected residential and boutique hospitality spaces, each layered with custom finishes,
+              balanced lighting, and timeless styling details.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 portfolio-grid">
+        <div class="col-lg-8">
+          <article class="portfolio-card portfolio-large reveal-delay-1">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80" alt="Luxury living room project">
+            <div class="portfolio-overlay">
+              <div class="portfolio-meta">
+                <span class="portfolio-tag">Residential</span>
+                <span class="portfolio-year">2026</span>
+              </div>
+              <div class="portfolio-content">
+                <div>
+                  <h3>Sunlit Urban Retreat</h3>
+                  <p>Soft oak textures, boucle seating, layered stone finishes, and gallery-inspired styling.</p>
+                </div>
+                <a href="#contact" class="portfolio-btn">View More</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-4">
+          <article class="portfolio-card portfolio-small reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1000&q=80" alt="Modern kitchen interior project">
+            <div class="portfolio-overlay">
+              <div class="portfolio-meta">
+                <span class="portfolio-tag">Kitchen</span>
+                <span class="portfolio-year">2025</span>
+              </div>
+              <div class="portfolio-content">
+                <div>
+                  <h3>Stone & Brass Kitchen</h3>
+                  <p>Clean lines, warm marble, and custom-lit joinery details.</p>
+                </div>
+                <a href="#contact" class="portfolio-btn">View More</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <article class="portfolio-card portfolio-small reveal-delay-1">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80" alt="Elegant lounge area interior">
+            <div class="portfolio-overlay">
+              <div class="portfolio-meta">
+                <span class="portfolio-tag">Lounge</span>
+                <span class="portfolio-year">2024</span>
+              </div>
+              <div class="portfolio-content">
+                <div>
+                  <h3>Modern Warmth Lounge</h3>
+                  <p>Muted earth tones and sculptural furniture with hotel-style calm.</p>
+                </div>
+                <a href="#contact" class="portfolio-btn">View More</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <article class="portfolio-card portfolio-small reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1000&q=80" alt="Luxury bedroom interior project">
+            <div class="portfolio-overlay">
+              <div class="portfolio-meta">
+                <span class="portfolio-tag">Bedroom</span>
+                <span class="portfolio-year">2026</span>
+              </div>
+              <div class="portfolio-content">
+                <div>
+                  <h3>Quiet Luxury Suite</h3>
+                  <p>Textured neutrals, curved silhouettes, and tailored lighting balance.</p>
+                </div>
+                <a href="#contact" class="portfolio-btn">View More</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-4">
+          <article class="portfolio-card portfolio-small reveal-delay-3">
+            <img src="https://images.unsplash.com/photo-1505409859467-3a796fd5798e?auto=format&fit=crop&w=1000&q=80" alt="Boutique hospitality interior project">
+            <div class="portfolio-overlay">
+              <div class="portfolio-meta">
+                <span class="portfolio-tag">Hospitality</span>
+                <span class="portfolio-year">2025</span>
+              </div>
+              <div class="portfolio-content">
+                <div>
+                  <h3>Boutique Lounge Concept</h3>
+                  <p>Dark timber accents, moody glow, and immersive layered seating zones.</p>
+                </div>
+                <a href="#contact" class="portfolio-btn">View More</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="content-block process-section pt-0">
+    <div class="container">
+      <div class="process-head reveal-on-scroll">
+        <div class="row align-items-end g-4">
+          <div class="col-lg-7">
+            <p class="section-tag">Our Process</p>
+            <h2>From concept to final styling, every stage is designed to feel clear, collaborative, and elevated.</h2>
+          </div>
+          <div class="col-lg-5">
+            <p class="process-copy">
+              Our workflow blends creative direction with practical execution, so each interior feels intentional
+              from the first moodboard to the final layered reveal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 process-grid">
+        <div class="col-lg-3 col-md-6">
+          <article class="process-screen reveal-delay-1">
+            <div class="process-screen-top">
+              <span class="process-step">01</span>
+              <span class="process-pill">Discovery</span>
+            </div>
+            <div class="process-visual visual-discovery">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="process-body">
+              <h3>Understand the Space</h3>
+              <p>We map lifestyle needs, architectural opportunities, and the emotional tone the space should carry.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <article class="process-screen reveal-delay-2">
+            <div class="process-screen-top">
+              <span class="process-step">02</span>
+              <span class="process-pill">Concept</span>
+            </div>
+            <div class="process-visual visual-concept">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="process-body">
+              <h3>Build the Direction</h3>
+              <p>Moodboards, finish palettes, furniture language, and layout concepts shape the design identity.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <article class="process-screen reveal-delay-3">
+            <div class="process-screen-top">
+              <span class="process-step">03</span>
+              <span class="process-pill">Refinement</span>
+            </div>
+            <div class="process-visual visual-refine">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="process-body">
+              <h3>Refine Every Layer</h3>
+              <p>We fine-tune proportions, materials, lighting, and custom details until the scheme feels complete.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <article class="process-screen reveal-delay-2">
+            <div class="process-screen-top">
+              <span class="process-step">04</span>
+              <span class="process-pill">Reveal</span>
+            </div>
+            <div class="process-visual visual-reveal">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="process-body">
+              <h3>Style and Deliver</h3>
+              <p>The final installation brings together art, decor, texture, and atmosphere for a polished finish.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="content-block testimonial-section pt-0">
+    <div class="container">
+      <div class="testimonial-head reveal-on-scroll">
+        <div class="row align-items-end g-4">
+          <div class="col-lg-7">
+            <p class="section-tag">Testimonials</p>
+            <h2>Clients remember the atmosphere, the detail, and how effortless the entire transformation felt.</h2>
+          </div>
+          <div class="col-lg-5">
+            <p class="testimonial-copy">
+              A premium design experience should feel seamless from first conversation to final styling. These words
+              reflect the calm, confidence, and beauty our clients felt inside their finished spaces.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-slider reveal-delay-1">
+        <div class="testimonial-track">
+          <article class="testimonial-card is-active">
+            <div class="testimonial-stars">★★★★★</div>
+            <blockquote>
+              “The studio transformed our apartment into something deeply warm and elegant. Every material, curve,
+              and lighting choice felt intentional.”
+            </blockquote>
+            <div class="testimonial-profile">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" alt="Client portrait of Aisha Malik">
+              <div>
+                <h3>Aisha Malik</h3>
+                <p>Luxury Residence, Mumbai</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <blockquote>
+              “What impressed us most was the balance of creativity and clarity. The team made every step feel smooth,
+              elevated, and completely customized.”
+            </blockquote>
+            <div class="testimonial-profile">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Client portrait of Daniel Reed">
+              <div>
+                <h3>Daniel Reed</h3>
+                <p>Boutique Hospitality Project</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <blockquote>
+              “The final result felt like a magazine editorial brought to life. Calm, luxurious, and still perfectly
+              livable for our family every day.”
+            </blockquote>
+            <div class="testimonial-profile">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" alt="Client portrait of Sofia Bennett">
+              <div>
+                <h3>Sofia Bennett</h3>
+                <p>Private Villa Renovation</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="testimonial-controls">
+          <button class="testimonial-arrow testimonial-prev" type="button" aria-label="Previous testimonial">
+            <span>&larr;</span>
+          </button>
+          <div class="testimonial-dots" aria-label="Testimonial slider pagination">
+            <button class="testimonial-dot is-active" type="button" data-testimonial="0" aria-label="Go to testimonial 1"></button>
+            <button class="testimonial-dot" type="button" data-testimonial="1" aria-label="Go to testimonial 2"></button>
+            <button class="testimonial-dot" type="button" data-testimonial="2" aria-label="Go to testimonial 3"></button>
+          </div>
+          <button class="testimonial-arrow testimonial-next" type="button" aria-label="Next testimonial">
+            <span>&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="content-block pt-0">
+    <div class="container">
+      <div class="about-section reveal-on-scroll">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6">
+            <div class="about-copy">
+              <p class="section-tag">About Studio</p>
+              <h2>We design interiors with softness, structure, and a story people remember.</h2>
+              <p class="about-lead">
+                Interior Atelier blends spatial planning, material curation, and editorial styling to create
+                homes and boutique spaces that feel elevated without losing warmth.
+              </p>
+              <div class="about-points">
+                <div class="about-point">
+                  <span class="point-index">01</span>
+                  <div>
+                    <h3>Tailored Direction</h3>
+                    <p>Each concept is shaped around lifestyle, architecture, and a refined palette strategy.</p>
+                  </div>
+                </div>
+                <div class="about-point">
+                  <span class="point-index">02</span>
+                  <div>
+                    <h3>Layered Materials</h3>
+                    <p>We balance stone, wood, textiles, lighting, and art to build depth and quiet drama.</p>
+                  </div>
+                </div>
+                <div class="about-point">
+                  <span class="point-index">03</span>
+                  <div>
+                    <h3>Responsive Experience</h3>
+                    <p>From concept to installation, every detail is planned to feel seamless across the project.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="about-visual-wrap">
+              <div class="about-photo-card photo-main reveal-delay-1">
+                <img src="https://images.pexels.com/photos/20200290/pexels-photo-20200290.jpeg" alt="Warm modern living room interior">
+                <div class="photo-overlay">
+                  <span class="about-mini-tag">Design Philosophy</span>
+                  <h3>Calm luxury through proportion, texture, and restraint.</h3>
+                  <p>We favor tactile finishes, sculptural silhouettes, and timeless compositions that still feel fresh.</p>
+                </div>
+              </div>
+
+              <div class="about-photo-card photo-secondary reveal-delay-2">
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Elegant neutral bedroom interior">
+              </div>
+<!-- 
+              <div class="about-panel panel-floating reveal-delay-2">
+                <span class="about-stat">10+</span>
+                <p>Years shaping premium residential and hospitality spaces.</p>
+              </div>
+
+              <div class="about-grid reveal-delay-3">
+                <div class="about-tile">
+                  <strong>Residential</strong>
+                  <span>Private homes, penthouses, villas</span>
+                </div>
+                <div class="about-tile">
+                  <strong>Hospitality</strong>
+                  <span>Lounges, suites, boutique stays</span>
+                </div>
+                <div class="about-tile">
+                  <strong>Styling</strong>
+                  <span>Furniture, lighting, art curation</span>
+                </div>
+                <div class="about-tile">
+                  <strong>Planning</strong>
+                  <span>Layout flow, finish pairing, sourcing</span>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+ 
+
+
+
+ 
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
