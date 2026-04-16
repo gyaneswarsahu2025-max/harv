@@ -22,6 +22,12 @@
       background: #f5f5f5;
     }
 
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
     /* Cover Page Design */
     #coverPage {
       width: 800px;
@@ -134,6 +140,27 @@ font-family: "Fredoka", sans-serif;
   font-style: normal;
     }
 
+    .site-footer {
+      margin-top: 28px;
+      padding: 18px 12px 28px;
+      text-align: center;
+      font-family: "Lato", sans-serif;
+      color: #334155;
+    }
+
+    .site-footer a {
+      color: #b91c1c;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(185, 28, 28, 0.25);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .site-footer a:hover {
+      color: #7f1d1d;
+      border-color: rgba(127, 29, 29, 0.5);
+    }
+
     /* .lecturer-value {
       position: absolute;
       top: 920px;
@@ -146,6 +173,7 @@ font-family: "Fredoka", sans-serif;
 </head>
 
 <body>
+<div class="page-shell">
 
 <div class="container mt-4">
 
@@ -189,6 +217,12 @@ font-family: "Fredoka", sans-serif;
     </div>
   </div>
 
+</div>
+
+<footer class="site-footer">
+  Design and Developed by
+  <a href="https://github.com/gyaneswarsahu2025-max" target="_blank" rel="noopener noreferrer">Mr. Gyaneswar Sahu</a>
+</footer>
 </div>
 
 <script>
