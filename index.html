@@ -28,6 +28,23 @@
       flex-direction: column;
     }
 
+    .page-header {
+      margin: 0 0 24px;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, #7f1d1d, #b91c1c);
+      box-shadow: 0 10px 24px rgba(127, 29, 29, 0.2);
+    }
+
+    .page-title {
+      margin: 0;
+      text-align: center;
+      font-family: "Fredoka", sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
     /* Cover Page Design */
     #coverPage {
       width: 800px;
@@ -175,6 +192,10 @@ font-family: "Fredoka", sans-serif;
 <body>
 <div class="page-shell">
 
+<div class="page-header">
+  <h1 class="page-title">Assignment Cover Page Generator</h1>
+</div>
+
 <div class="container mt-4">
 
   <div class="row">
@@ -284,6 +305,15 @@ const fallbackSubjects = [
     $("#lecturerText").text(selectedSubject ? selectedSubject.lecturer : "Lecturer Name");
   }
 
+  function makeSafeFilePart(value, fallback) {
+    const cleanedValue = (value || "")
+      .trim()
+      .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+      .replace(/\s+/g, " ");
+
+    return cleanedValue || fallback;
+  }
+
   function resetForm() {
     $("#name").val("");
     $("#regNo").val("");
@@ -305,9 +335,16 @@ const fallbackSubjects = [
 
   // Download PNG
   $("#download").click(function () {
+    const selectedSubject = getSelectedSubject();
+    const regNo = makeSafeFilePart($("#regNo").val(), "RegistrationNumber");
+    const subjectName = makeSafeFilePart(
+      selectedSubject ? selectedSubject.name : "",
+      "SubjectName"
+    );
+
     html2canvas(document.querySelector("#coverPage")).then(canvas => {
       let link = document.createElement("a");
-      link.download = "cover-page.png";
+      link.download = `${regNo} - ${subjectName}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     });
