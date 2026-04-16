@@ -1,0 +1,64 @@
+{
+  "subjects": [
+    {
+      "code": "MBPC1004",
+      "name": "Corporate Finance",
+      "short_name": "CF",
+      "lecturer": "Dr. Santanu Das"
+    },
+    {
+      "code": "MBPC1005",
+      "name": "Cost and Management Accounting",
+      "short_name": "CMA",
+      "lecturer": "Mrs. Snigdha Priyadarshini"
+    },
+    {
+      "code": "MBPC1006",
+      "name": "Human Resources Management",
+      "short_name": "HRM",
+      "lecturer": "Mr. Uma Sankar Pani"
+    },
+    {
+      "code": "MBQT1002",
+      "name": "Business Research",
+      "short_name": "BR",
+      "lecturer": "Mr. Avinash Panda"
+    },
+    {
+      "code": "MBPC1007",
+      "name": "Operations Management",
+      "short_name": "OM",
+      "lecturer": "Miss. Rojalin Sahu"
+    },
+    {
+      "code": "MBPC1008",
+      "name": "Business Analytics",
+      "short_name": "BA",
+      "lecturer": "Dr. Satyajit Hotta"
+    },
+    {
+      "code": "MBPC1009",
+      "name": "Management Information System",
+      "short_name": "MIS",
+      "lecturer": "Mr. Jajati Patnaik"
+    },
+    {
+      "code": "MBPC1010",
+      "name": "Strategic Management",
+      "short_name": "SM",
+      "lecturer": "Miss. Smita Senapati"
+    },
+    {
+      "code": "MBEV1202",
+      "name": "Health & Wellness",
+      "short_name": "H&W",
+      "lecturer": "Dr. Santanu Das"
+    },
+    {
+      "code": "MBPC1011",
+      "name": "Introduction to AI",
+      "short_name": "AI",
+      "lecturer": "Mr. Avinash Panda"
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Page Designer - Custom Background</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- html2canvas -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Times+New+Roman&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="designer.css">
+</head>
+
+<body>
+
+<div class="app-wrapper">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="container">
+      <h1 class="app-title">Cover Page Designer</h1>
+      <p class="app-subtitle">Upload your background & position fields on top</p>
+      <div class="mt-3">
+        <a href="fixed-bg.html" class="btn-designer-nav">Fixed BG</a>
+        <a href="quick.html" class="btn-designer-nav">⚡ Quick Cover Pages</a>
+        <a href="index.html" class="btn-designer-nav">← Standard Generator</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Form Section -->
+        <div class="col-lg-4">
+          <div class="form-card">
+            <h4 class="form-title">Upload Background</h4>
+            
+            <div class="upload-area" id="uploadArea">
+              <input type="file" id="bgUpload" accept="image/*" class="sr-only-file">
+              <div class="upload-placeholder" id="uploadPlaceholder">
+                <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                </svg>
+                <p>Click to upload background image</p>
+                <span>JPG, PNG supported</span>
+              </div>
+              <div class="upload-preview" id="uploadPreview" style="display:none;">
+                <img id="uploadedBg" src="" alt="Uploaded Background">
+                <button class="btn-remove-bg" id="removeBg" type="button" title="Remove background">✕</button>
+              </div>
+            </div>
+
+            <!-- Predefined Backgrounds -->
+            <div class="mt-3">
+              <label class="form-label">Or use predefined backgrounds:</label>
+              <div class="predefined-bgs">
+                <div class="predefined-bg" data-bg="rit_1.png">
+                  <img src="rit_1.png" alt="Background 1" onerror="this.style.display='none'">
+                  <span>BG 1</span>
+                </div>
+                <div class="predefined-bg" data-bg="rit_2.png">
+                  <img src="rit_2.png" alt="Background 2" onerror="this.style.display='none'">
+                  <span>BG 2</span>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="form-title mt-4">Subject Selection</h4>
+            
+            <div class="mb-3">
+              <label for="subjectSelect" class="form-label">Choose Subject</label>
+              <select id="subjectSelect" class="form-select">
+                <option value="">Select a subject...</option>
+              </select>
+            </div>
+
+            <h4 class="form-title mt-4">Student Information</h4>
+            
+            <div class="mb-3">
+              <label for="studentName" class="form-label">Student Name</label>
+              <input type="text" id="studentName" class="form-control" placeholder="Enter full name">
+            </div>
+
+            <div class="mb-3">
+              <label for="regNo" class="form-label">Registration Number</label>
+              <input type="text" id="regNo" class="form-control" placeholder="e.g., 2501234567">
+            </div>
+
+            <div class="mb-3">
+              <label for="courseCode" class="form-label">Course Code</label>
+              <input type="text" id="courseCode" class="form-control" placeholder="e.g., MBA-501">
+            </div>
+
+            <div class="mb-3">
+              <label for="subjectName" class="form-label">Subject Name</label>
+              <input type="text" id="subjectName" class="form-control" placeholder="e.g., Marketing Management">
+            </div>
+
+            <div class="mb-3">
+              <label for="lecturerName" class="form-label">Lecturer Name</label>
+              <input type="text" id="lecturerName" class="form-control" placeholder="e.g., Dr. S. Patel">
+            </div>
+
+            <h4 class="form-title mt-4">Font Settings</h4>
+
+            <!-- Field Font Controls -->
+            <div class="field-font-controls">
+              <div class="field-font-control" data-field="studentName">
+                <div class="ffc-header">
+                  <span class="ffc-label">Student Name</span>
+                  <span class="ffc-toggle" data-target="ffcStudent">▼</span>
+                </div>
+                <div class="ffc-body" id="ffcStudent">
+                  <div class="ffc-row">
+                    <select class="ffc-family form-select form-select-sm" data-field="studentName">
+                      <option value="'Times New Roman', serif">Times New Roman</option>
+                      <option value="'Inter', sans-serif">Inter</option>
+                      <option value="Arial, sans-serif">Arial</option>
+                      <option value="Georgia, serif">Georgia</option>
+                      <option value="'Courier New', monospace">Courier New</option>
+                      <option value="Verdana, sans-serif">Verdana</option>
+                      <option value="Tahoma, sans-serif">Tahoma</option>
+                    </select>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-size-row">
+                      <span>Size:</span>
+                      <input type="range" class="ffc-size form-range" min="10" max="60" value="22" data-field="studentName">
+                      <span class="ffc-size-val" data-field="studentName">22px</span>
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-color-row">
+                      <span>Color:</span>
+                      <input type="color" class="ffc-color form-control-color" value="#0d4a7a" data-field="studentName">
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-bold" data-field="studentName">
+                      <span>Bold</span>
+                    </label>
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-italic" data-field="studentName">
+                      <span>Italic</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-font-control" data-field="regNo">
+                <div class="ffc-header">
+                  <span class="ffc-label">Reg. Number</span>
+                  <span class="ffc-toggle" data-target="ffcRegNo">▼</span>
+                </div>
+                <div class="ffc-body" id="ffcRegNo">
+                  <div class="ffc-row">
+                    <select class="ffc-family form-select form-select-sm" data-field="regNo">
+                      <option value="'Times New Roman', serif">Times New Roman</option>
+                      <option value="'Inter', sans-serif">Inter</option>
+                      <option value="Arial, sans-serif">Arial</option>
+                      <option value="Georgia, serif">Georgia</option>
+                      <option value="'Courier New', monospace">Courier New</option>
+                      <option value="Verdana, sans-serif">Verdana</option>
+                      <option value="Tahoma, sans-serif">Tahoma</option>
+                    </select>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-size-row">
+                      <span>Size:</span>
+                      <input type="range" class="ffc-size form-range" min="10" max="60" value="20" data-field="regNo">
+                      <span class="ffc-size-val" data-field="regNo">20px</span>
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-color-row">
+                      <span>Color:</span>
+                      <input type="color" class="ffc-color form-control-color" value="#0d4a7a" data-field="regNo">
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-bold" data-field="regNo">
+                      <span>Bold</span>
+                    </label>
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-italic" data-field="regNo">
+                      <span>Italic</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-font-control" data-field="courseCode">
+                <div class="ffc-header">
+                  <span class="ffc-label">Course Code</span>
+                  <span class="ffc-toggle" data-target="ffcCourseCode">▼</span>
+                </div>
+                <div class="ffc-body" id="ffcCourseCode">
+                  <div class="ffc-row">
+                    <select class="ffc-family form-select form-select-sm" data-field="courseCode">
+                      <option value="'Times New Roman', serif">Times New Roman</option>
+                      <option value="'Inter', sans-serif">Inter</option>
+                      <option value="Arial, sans-serif">Arial</option>
+                      <option value="Georgia, serif">Georgia</option>
+                      <option value="'Courier New', monospace" selected>Courier New</option>
+                      <option value="Verdana, sans-serif">Verdana</option>
+                      <option value="Tahoma, sans-serif">Tahoma</option>
+                    </select>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-size-row">
+                      <span>Size:</span>
+                      <input type="range" class="ffc-size form-range" min="10" max="60" value="22" data-field="courseCode">
+                      <span class="ffc-size-val" data-field="courseCode">22px</span>
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-color-row">
+                      <span>Color:</span>
+                      <input type="color" class="ffc-color form-control-color" value="#c75b2a" data-field="courseCode">
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-bold" data-field="courseCode" checked>
+                      <span>Bold</span>
+                    </label>
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-italic" data-field="courseCode">
+                      <span>Italic</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-font-control" data-field="subjectName">
+                <div class="ffc-header">
+                  <span class="ffc-label">Subject Name</span>
+                  <span class="ffc-toggle" data-target="ffcSubjectName">▼</span>
+                </div>
+                <div class="ffc-body" id="ffcSubjectName">
+                  <div class="ffc-row">
+                    <select class="ffc-family form-select form-select-sm" data-field="subjectName">
+                      <option value="'Times New Roman', serif">Times New Roman</option>
+                      <option value="'Inter', sans-serif" selected>Inter</option>
+                      <option value="Arial, sans-serif">Arial</option>
+                      <option value="Georgia, serif">Georgia</option>
+                      <option value="'Courier New', monospace">Courier New</option>
+                      <option value="Verdana, sans-serif">Verdana</option>
+                      <option value="Tahoma, sans-serif">Tahoma</option>
+                    </select>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-size-row">
+                      <span>Size:</span>
+                      <input type="range" class="ffc-size form-range" min="10" max="60" value="24" data-field="subjectName">
+                      <span class="ffc-size-val" data-field="subjectName">24px</span>
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-color-row">
+                      <span>Color:</span>
+                      <input type="color" class="ffc-color form-control-color" value="#0d4a7a" data-field="subjectName">
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-bold" data-field="subjectName" checked>
+                      <span>Bold</span>
+                    </label>
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-italic" data-field="subjectName" checked>
+                      <span>Italic</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-font-control" data-field="lecturerName">
+                <div class="ffc-header">
+                  <span class="ffc-label">Lecturer Name</span>
+                  <span class="ffc-toggle" data-target="ffcLecturerName">▼</span>
+                </div>
+                <div class="ffc-body" id="ffcLecturerName">
+                  <div class="ffc-row">
+                    <select class="ffc-family form-select form-select-sm" data-field="lecturerName">
+                      <option value="'Times New Roman', serif">Times New Roman</option>
+                      <option value="'Inter', sans-serif">Inter</option>
+                      <option value="Arial, sans-serif">Arial</option>
+                      <option value="Georgia, serif">Georgia</option>
+                      <option value="'Courier New', monospace">Courier New</option>
+                      <option value="Verdana, sans-serif">Verdana</option>
+                      <option value="Tahoma, sans-serif">Tahoma</option>
+                    </select>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-size-row">
+                      <span>Size:</span>
+                      <input type="range" class="ffc-size form-range" min="10" max="60" value="20" data-field="lecturerName">
+                      <span class="ffc-size-val" data-field="lecturerName">20px</span>
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <div class="ffc-color-row">
+                      <span>Color:</span>
+                      <input type="color" class="ffc-color form-control-color" value="#0d4a7a" data-field="lecturerName">
+                    </div>
+                  </div>
+                  <div class="ffc-row">
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-bold" data-field="lecturerName">
+                      <span>Bold</span>
+                    </label>
+                    <label class="ffc-checkbox">
+                      <input type="checkbox" class="ffc-italic" data-field="lecturerName">
+                      <span>Italic</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button id="download" class="btn btn-success w-100">
+                Download Cover Page
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview & Positioning Section -->
+        <div class="col-lg-8">
+          <div class="preview-header">
+            <h4 class="preview-title">Position Fields</h4>
+            <span class="preview-badge">Drag to position</span>
+          </div>
+          
+          <div class="preview-container">
+            <div class="designer-workspace" id="designerWorkspace">
+              <div class="no-bg-message" id="noBgMessage">
+                <svg width="64" height="64" fill="none" stroke="#94a3b8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <h3>Upload a background image to get started</h3>
+                <p>Your background image will appear here</p>
+              </div>
+
+              <div class="cover-canvas" id="coverCanvas" style="display:none;">
+                <img id="canvasBg" src="" alt="Background">
+                
+                <!-- Draggable Fields -->
+                <div class="draggable-field" id="fieldStudent" data-field="studentName">
+                  <span class="field-label">Student Name</span>
+                  <span class="field-value" id="dispStudentName"></span>
+                </div>
+                
+                <div class="draggable-field" id="fieldRegNo" data-field="regNo">
+                  <span class="field-label">Reg. No</span>
+                  <span class="field-value" id="dispRegNo"></span>
+                </div>
+                
+                <div class="draggable-field" id="fieldCourseCode" data-field="courseCode">
+                  <span class="field-label">Course Code</span>
+                  <span class="field-value" id="dispCourseCode"></span>
+                </div>
+                
+                <div class="draggable-field" id="fieldSubject" data-field="subjectName">
+                  <span class="field-label">Subject</span>
+                  <span class="field-value" id="dispSubjectName"></span>
+                </div>
+                
+                <div class="draggable-field" id="fieldLecturer" data-field="lecturerName">
+                  <span class="field-label">Lecturer</span>
+                  <span class="field-value" id="dispLecturerName"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="designer.js"></script>
+</body>
+</html>

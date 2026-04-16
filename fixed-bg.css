@@ -1,0 +1,283 @@
+:root {
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.15);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Header */
+.app-header {
+  background: linear-gradient(135deg, #0d4a7a 0%, #0a3659 100%);
+  padding: 1.25rem 0;
+  color: white;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.app-title { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.2rem; }
+.app-subtitle { font-size: 0.85rem; opacity: 0.85; margin-bottom: 0.5rem; }
+
+.header-links { display: flex; gap: 0.5rem; justify-content: center; }
+.btn-nav {
+  padding: 0.35rem 1rem;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-nav:hover { background: rgba(255,255,255,0.25); color: white; text-decoration: none; }
+
+/* Main */
+.main-content { padding: 1.5rem 0; }
+
+/* Input Card */
+.input-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 1rem;
+}
+
+.input-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.form-label { font-weight: 500; font-size: 0.85rem; margin-bottom: 0.3rem; }
+.form-control-sm { padding: 0.5rem 0.75rem; font-size: 0.85rem; border: 2px solid var(--border); border-radius: 8px; }
+.form-control-sm:focus { border-color: #0d4a7a; box-shadow: 0 0 0 3px rgba(13,74,122,0.1); }
+
+/* Subject Detail Box */
+.subject-detail-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.sd-row {
+  font-size: 0.82rem;
+  padding: 0.25rem 0;
+}
+
+.sd-row strong {
+  color: #0d4a7a;
+  display: inline-block;
+  width: 65px;
+}
+
+/* Background Selector */
+.bg-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.bg-option {
+  flex: 1;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  background: white;
+}
+
+.bg-option:hover { border-color: #0d4a7a; transform: translateY(-2px); }
+.bg-option.active { border-color: #0d4a7a; background: #eff6ff; box-shadow: 0 0 0 3px rgba(13,74,122,0.1); }
+
+.bg-option img {
+  width: 100%;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.bg-option span { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); }
+.bg-option.active span { color: #0d4a7a; }
+
+/* Download Button */
+.btn-download {
+  width: 100%;
+  padding: 0.75rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-download:hover { background: #059669; transform: translateY(-1px); }
+.btn-download:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* Preview Section */
+.preview-section {
+  background: #cbd5e1;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.preview-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Background Preview */
+.bg-preview {
+  width: 595px;
+  height: 842px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.bg-preview:not(.active-preview) {
+  opacity: 0.3;
+  filter: grayscale(0.5);
+  pointer-events: none;
+}
+
+.bg-preview.active-preview {
+  opacity: 1;
+  filter: none;
+}
+
+.bg-canvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.no-bg-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ========================================
+   FIXED FIELDS - User can adjust positions
+   ======================================== */
+.fixed-field {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ff-label {
+  font-size: 10px;
+  color: rgba(13, 74, 122, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.ff-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0d4a7a;
+  font-family: 'Times New Roman', serif;
+  white-space: nowrap;
+}
+
+/* ========================================
+   BACKGROUND 1 - Field Positions
+   User: adjust top/left per field
+   ======================================== */
+#preview-bg1 .field-course-code { top: 40%; left: 45%; }
+#preview-bg1 .field-subject    { top: 45%; left: 35%; }
+#preview-bg1 .field-student    { top: 60%; left: 15%; }
+#preview-bg1 .field-regno      { top: 68%; left: 15%; }
+#preview-bg1 .field-lecturer   { top: 60%; left: 60%; }
+
+/* ========================================
+   BACKGROUND 2 - Field Positions
+   User: adjust top/left per field
+   ======================================== */
+#preview-bg2 .field-course-code { top: 48%; left: 42%; }
+#preview-bg2 .field-subject    { top: 53%; left: 30%; }
+#preview-bg2 .field-student    { top: 68%; left: 12%; }
+#preview-bg2 .field-regno      { top: 74%; left: 12%; }
+#preview-bg2 .field-lecturer   { top: 68%; left: 55%; }
+
+/* ========================================
+   Download State
+   ======================================== */
+.bg-preview.downloading .fixed-field {
+  background: transparent !important;
+  border: none !important;
+}
+
+.bg-preview.downloading .ff-label {
+  color: transparent !important;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 1200px) {
+  .bg-preview { width: 500px; height: 707px; }
+}
+
+@media (max-width: 992px) {
+  .input-card { position: static; margin-bottom: 1.5rem; }
+  .bg-preview { width: 420px; height: 594px; }
+}
+
+@media (max-width: 576px) {
+  .app-title { font-size: 1.3rem; }
+  .bg-preview { width: 100%; max-width: 360px; height: auto; aspect-ratio: 595/842; }
+  .preview-section { padding: 1rem; }
+}

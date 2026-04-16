@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Cover Pages - Roland Institute of Technology</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Times+New+Roman&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="quick.css">
+</head>
+
+<body>
+
+<div class="app-wrapper">
+  <header class="app-header">
+    <div class="container">
+      <h1 class="app-title">Quick Cover Pages</h1>
+      <p class="app-subtitle">Pick a design, fill your details, download instantly</p>
+      <div class="header-links">
+        <a href="index.html" class="btn-nav">Standard</a>
+        <a href="fixed-bg.html" class="btn-nav">Fixed BG</a>
+        <a href="designer.html" class="btn-nav">Designer</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Input Panel -->
+        <div class="col-lg-3">
+          <div class="input-card">
+            <h5 class="input-title">Your Details</h5>
+
+            <div class="mb-3">
+              <label class="form-label">Subject</label>
+              <select id="subjectSelect" class="form-control form-control-sm">
+                <option value="">Select subject...</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Student Name</label>
+              <input type="text" id="studentName" class="form-control form-control-sm" placeholder="Full name">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Registration No</label>
+              <input type="text" id="regNo" class="form-control form-control-sm" placeholder="e.g., 2501234567">
+            </div>
+
+            <hr class="my-3">
+
+            <h5 class="input-title">Choose Template</h5>
+
+            <div class="template-grid">
+              <div class="template-option active" data-template="t1">
+                <div class="template-thumb t1-thumb"></div>
+                <span>Classic Blue</span>
+              </div>
+              <div class="template-option" data-template="t2">
+                <div class="template-thumb t2-thumb"></div>
+                <span>Bold Red</span>
+              </div>
+              <div class="template-option" data-template="t3">
+                <div class="template-thumb t3-thumb"></div>
+                <span>Green Modern</span>
+              </div>
+              <div class="template-option" data-template="t4">
+                <div class="template-thumb t4-thumb"></div>
+                <span>Dark Elegant</span>
+              </div>
+              <div class="template-option" data-template="t5">
+                <div class="template-thumb t5-thumb"></div>
+                <span>Purple Clean</span>
+              </div>
+              <div class="template-option" data-template="t6">
+                <div class="template-thumb t6-thumb"></div>
+                <span>Orange Accent</span>
+              </div>
+            </div>
+
+            <button id="downloadBtn" class="btn-download">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5Z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3Z"/></svg>
+              Download PNG
+            </button>
+          </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="col-lg-9">
+          <div class="preview-section">
+            <div class="preview-scroll" id="previewScroll">
+
+              <!-- Template 1: Classic Blue -->
+              <div class="template-preview" id="preview-t1" data-template="t1">
+                <div class="tp-bg-image">
+                  <img src="rit_2.png" alt="BG" onerror="this.style.display='none'">
+                </div>
+                <div class="tp-border tp-border-blue"></div>
+                <div class="tp-content">
+                  <div class="tp-logo">
+                    <img src="rit_2.png" alt="RIT" class="tp-logo-img" onerror="this.outerHTML='<div class=\'tp-logo-fallback\'><span>RIT</span></div>'">
+                  </div>
+                  <h1 class="tp-inst">Roland Institute of Technology</h1>
+                  <p class="tp-affil">( Affiliated to Biju Pattnaik University of Technology, Odisha and approved by AICTE, New Delhi. It is ISO 9001:2015 certified )</p>
+                  <p class="tp-address">Surya Vihar , Berhampur , Ganjam , Odisha - 761008</p>
+                  <h2 class="tp-program">Master of Business Administration</h2>
+                  <p class="tp-batch">MBA 2025-27</p>
+                  <div class="tp-divider-blue"></div>
+                  <h3 class="tp-assignment">Assignment</h3>
+                  <p class="tp-subject" id="t1-subject">Subject Name</p>
+                  <p class="tp-code">Course Code : <span id="t1-code">______</span></p>
+                  <div class="tp-lower">
+                    <div class="tp-left">
+                      <p class="tp-label">Prepared by:</p>
+                      <p class="tp-val" id="t1-student">___________________</p>
+                      <p class="tp-label">Registration No :</p>
+                      <p class="tp-val" id="t1-regno">___________________</p>
+                    </div>
+                    <div class="tp-mid-line"><span>✻</span></div>
+                    <div class="tp-right">
+                      <p class="tp-label">Presented to:</p>
+                      <p class="tp-val" id="t1-lecturer">___________________</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Template 2: Bold Red -->
+              <div class="template-preview" id="preview-t2" data-template="t2">
+                <div class="tp-bg-image">
+                  <img src="rit_1.png" alt="BG" onerror="this.style.display='none'">
+                </div>
+                <div class="tp-border tp-border-red"></div>
+                <div class="tp-content">
+                  <div class="tp-logo">
+                    <img src="rit_2.png" alt="RIT" class="tp-logo-img" onerror="this.outerHTML='<div class=\'tp-logo-fallback red\'><span>RIT</span></div>'">
+                  </div>
+                  <h1 class="tp-inst tp-inst-red">Roland Institute of Technology</h1>
+                  <p class="tp-affil">( Affiliated to Biju Pattnaik University of Technology, Odisha and approved by AICTE, New Delhi. It is ISO 9001:2015 certified )</p>
+                  <p class="tp-address tp-address-red">Surya Vihar , Berhampur , Ganjam , Odisha - 761008</p>
+                  <h2 class="tp-program tp-program-red">Master of Business Administration</h2>
+                  <p class="tp-batch tp-batch-red">MBA 2025-27</p>
+                  <div class="tp-divider-red"></div>
+                  <h3 class="tp-assignment tp-assignment-red">Assignment</h3>
+                  <p class="tp-subject tp-subject-red" id="t2-subject">Subject Name</p>
+                  <p class="tp-code tp-code-red">Course Code : <span id="t2-code">______</span></p>
+                  <div class="tp-lower">
+                    <div class="tp-left">
+                      <p class="tp-label tp-label-red">Prepared by:</p>
+                      <p class="tp-val" id="t2-student">___________________</p>
+                      <p class="tp-label tp-label-red">Registration No :</p>
+                      <p class="tp-val" id="t2-regno">___________________</p>
+                    </div>
+                    <div class="tp-mid-line red"><span>✻</span></div>
+                    <div class="tp-right">
+                      <p class="tp-label tp-label-red">Presented to:</p>
+                      <p class="tp-val" id="t2-lecturer">___________________</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Template 3: Green Modern -->
+              <div class="template-preview" id="preview-t3" data-template="t3">
+                <div class="tp-bg-image">
+                  <img src="rit_2.png" alt="BG" onerror="this.style.display='none'">
+                </div>
+                <div class="tp-sidebar-green"></div>
+                <div class="tp-content tp-content-green">
+                  <div class="tp-badge-green">Assignment</div>
+                  <h1 class="tp-inst tp-inst-green">Roland Institute of Technology</h1>
+                  <p class="tp-affil">( Affiliated to Biju Pattnaik University of Technology, Odisha and approved by AICTE, New Delhi )</p>
+                  <p class="tp-address tp-address-green">Surya Vihar , Berhampur , Ganjam , Odisha - 761008</p>
+                  <h2 class="tp-program tp-program-green">Master of Business Administration</h2>
+                  <p class="tp-batch tp-batch-green">MBA 2025-27</p>
+                  <div class="tp-divider-green"></div>
+                  <h3 class="tp-assignment tp-assignment-green">Assignment</h3>
+                  <p class="tp-subject tp-subject-green" id="t3-subject">Subject Name</p>
+                  <p class="tp-code tp-code-green">Course Code : <span id="t3-code">______</span></p>
+                  <div class="tp-lower">
+                    <div class="tp-left">
+                      <p class="tp-label tp-label-green">Prepared by:</p>
+                      <p class="tp-val" id="t3-student">___________________</p>
+                      <p class="tp-label tp-label-green">Registration No :</p>
+                      <p class="tp-val" id="t3-regno">___________________</p>
+                    </div>
+                    <div class="tp-mid-line green"><span>✻</span></div>
+                    <div class="tp-right">
+                      <p class="tp-label tp-label-green">Presented to:</p>
+                      <p class="tp-val" id="t3-lecturer">___________________</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Template 4: Dark Elegant -->
+              <div class="template-preview" id="preview-t4" data-template="t4">
+                <div class="tp-bg-image">
+                  <img src="rit_1.png" alt="BG" onerror="this.style.display='none'">
+                </div>
+                <div class="tp-bg-dark"></div>
+                <div class="tp-content tp-content-dark">
+                  <div class="tp-logo">
+                    <img src="rit_2.png" alt="RIT" class="tp-logo-img" onerror="this.outerHTML='<div class=\'tp-logo-fallback dark\'><span>RIT</span></div>'">
+                  </div>
+                  <h1 class="tp-inst tp-inst-dark">Roland Institute of Technology</h1>
+                  <p class="tp-affil tp-affil-dark">( Affiliated to Biju Pattnaik University of Technology, Odisha and approved by AICTE, New Delhi )</p>
+                  <p class="tp-address tp-address-dark">Surya Vihar , Berhampur , Ganjam , Odisha - 761008</p>
+                  <h2 class="tp-program tp-program-dark">Master of Business Administration</h2>
+                  <p class="tp-batch tp-batch-dark">MBA 2025-27</p>
+                  <div class="tp-divider-dark"></div>
+                  <h3 class="tp-assignment tp-assignment-dark">Assignment</h3>
+                  <p class="tp-subject tp-subject-dark" id="t4-subject">Subject Name</p>
+                  <p class="tp-code tp-code-dark">Course Code : <span id="t4-code">______</span></p>
+                  <div class="tp-lower">
+                    <div class="tp-left">
+                      <p class="tp-label tp-label-dark">Prepared by:</p>
+                      <p class="tp-val tp-val-dark" id="t4-student">___________________</p>
+                      <p class="tp-label tp-label-dark">Registration No :</p>
+                      <p class="tp-val tp-val-dark" id="t4-regno">___________________</p>
+                    </div>
+                    <div class="tp-mid-line dark"><span>✻</span></div>
+                    <div class="tp-right">
+                      <p class="tp-label tp-label-dark">Presented to:</p>
+                      <p class="tp-val tp-val-dark" id="t4-lecturer">___________________</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Template 5: Purple Clean -->
+              <div class="template-preview" id="preview-t5" data-template="t5">
+                <div class="tp-bg-image">
+                  <img src="rit_2.png" alt="BG" onerror="this.style.display='none'">
+                </div>
+                <div class="tp-border tp-border-purple"></div>
+                <div class="tp-content">
+                  <div class="tp-top-bar-purple"></div>
+                  <div class="tp-logo">
+                    <img src="rit_2.png" alt="RIT" class="tp-logo-img" onerror="this.outerHTML='<div class=\'tp-logo-fallback purple\'><span>RIT</span></div>'">
+                  </div>
+                  <h1 class="tp-inst">Roland Institute of Technology</h1>
+                  <p class="tp-affil">( Affiliated to Biju Pattnaik University of Technology, Odisha and approved by AICTE, New Delhi )</p>
+                  <p class="tp-address">Surya Vihar , Berhampur , Ganjam , Odisha - 761008</p>
+                  <h2 class="tp-program tp-program-purple">Master of Business Administration</h2>
+                  <p class="tp-batch tp-batch-purple">MBA 2025-27</p>
+                  <div class="tp-divider-purple"></div>
+                  <h3 class="tp-assignment">Assignment</h3>
+                  <p class="tp-subject tp-subject-purple" id="t5-subject">Subject Name</p>
+                  <p class="tp-code tp-code-purple">Course Code : <span id="t5-code">______</span></p>
+                  <div class="tp-lower">
+                    <div class="tp-left">
+                      <p class="tp-label tp-label-purple">Prepared by:</p>
+                      <p class="tp-val" id="t5-student">___________________</p>
+                      <p class="tp-label tp-label-purple">Registration No :</p>
+                      <p class="tp-val" id="t5-regno">___________________</p>
+                    </div>
+                    <div class="tp-mid-line purple"><span>✻</span></div>
+                    <div class="tp-right">
+                      <p class="tp-label tp-label-purple">Presented to:</p>
+                      <p class="tp-val" id="t5-lecturer">___________________</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Template 6: Orange Accent -->
+              <div class="template-preview" id="preview-t6" data-template="t6">
+                <div class="tp-bg-image">
+                  <img src="rit_1.png" alt="BG" onerror="this.style.display='none'">
+                </div>
+                <div class="tp-border tp-border-orange"></div>
+                <div class="tp-header-orange">
+                  <div class="tp-logo">
+                    <img src="rit_2.png" alt="RIT" class="tp-logo-img" onerror="this.outerHTML='<div class=\'tp-logo-fallback orange\'><span>RIT</span></div>'">
+                  </div>
+                  <h1 class="tp-inst">Roland Institute of Technology</h1>
+                  <p class="tp-affil">( Affiliated to Biju Pattnaik University of Technology, Odisha and approved by AICTE, New Delhi )</p>
+                </div>
+                <div class="tp-content">
+                  <p class="tp-address tp-address-orange">Surya Vihar , Berhampur , Ganjam , Odisha - 761008</p>
+                  <h2 class="tp-program tp-program-orange">Master of Business Administration</h2>
+                  <p class="tp-batch tp-batch-orange">MBA 2025-27</p>
+                  <div class="tp-divider-orange"></div>
+                  <h3 class="tp-assignment tp-assignment-orange">Assignment</h3>
+                  <p class="tp-subject tp-subject-orange" id="t6-subject">Subject Name</p>
+                  <p class="tp-code tp-code-orange">Course Code : <span id="t6-code">______</span></p>
+                  <div class="tp-lower">
+                    <div class="tp-left">
+                      <p class="tp-label tp-label-orange">Prepared by:</p>
+                      <p class="tp-val" id="t6-student">___________________</p>
+                      <p class="tp-label tp-label-orange">Registration No :</p>
+                      <p class="tp-val" id="t6-regno">___________________</p>
+                    </div>
+                    <div class="tp-mid-line orange"><span>✻</span></div>
+                    <div class="tp-right">
+                      <p class="tp-label tp-label-orange">Presented to:</p>
+                      <p class="tp-val" id="t6-lecturer">___________________</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="quick.js"></script>
+</body>
+</html>

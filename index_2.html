@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Page Generator - Roland Institute of Technology</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- html2canvas -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-wrapper">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="container">
+      <h1 class="app-title">Cover Page Generator</h1>
+      <p class="app-subtitle">Roland Institute of Technology - MBA Assignment Cover Pages</p>
+      <div class="mt-3">
+        <a href="quick.html" class="btn-designer-nav">⚡ Quick Cover Pages</a>
+        <a href="fixed-bg.html" class="btn-designer-nav">Fixed BG</a>
+        <a href="designer.html" class="btn-designer-nav">Custom Designer →</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Form Section -->
+        <div class="col-lg-4">
+          <div class="form-card">
+            <h4 class="form-title">Student Information</h4>
+            
+            <div class="mb-3">
+              <label for="studentName" class="form-label">Student Name *</label>
+              <input type="text" id="studentName" class="form-control" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="regNo" class="form-label">Registration Number *</label>
+              <input type="text" id="regNo" class="form-control" placeholder="e.g., 2501234567" required>
+            </div>
+
+            <h4 class="form-title mt-4">Subject Selection</h4>
+            
+            <div class="mb-3">
+              <label for="subjectSelect" class="form-label">Choose Subject *</label>
+              <select id="subjectSelect" class="form-select" required>
+                <option value="">Select a subject...</option>
+              </select>
+            </div>
+
+            <div class="subject-info-box" id="subjectInfoBox" style="display: none;">
+              <div class="subject-detail">
+                <strong>Code:</strong> <span id="subjectCode"></span>
+              </div>
+              <div class="subject-detail">
+                <strong>Name:</strong> <span id="subjectName"></span>
+              </div>
+              <div class="subject-detail">
+                <strong>Lecturer:</strong> <span id="subjectLecturer"></span>
+              </div>
+            </div>
+
+            <h4 class="form-title mt-4">Cover Page Design</h4>
+            
+            <div class="design-selection">
+              <div class="row g-2">
+                <div class="col-6">
+                  <div class="design-option active" data-design="design1">
+                    <div class="design-preview design1-preview"></div>
+                    <span>Standard</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="design-option" data-design="design2">
+                    <div class="design-preview design2-preview"></div>
+                    <span>Compact</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button id="generate" class="btn btn-primary w-100 mb-2">
+                Generate Cover Page
+              </button>
+              <button id="download" class="btn btn-success w-100">
+                Download as PNG
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="col-lg-8">
+          <div class="preview-header">
+            <h4 class="preview-title">Live Preview</h4>
+            <span class="preview-badge">A4 Size</span>
+          </div>
+          
+          <div class="preview-container">
+            <!-- Cover Page - Exact rit_2.png replica -->
+            <div class="cover-page-wrapper">
+              <div id="coverPage" class="cover-page" data-design="design1">
+                <!-- Dashed Border -->
+                <div class="cp-border"></div>
+                
+                <!-- Content -->
+                <div class="cp-content">
+                  <!-- Logo Section -->
+                  <div class="cp-logo">
+                    <img src="rit_logo.png" alt="RIT Logo" class="cp-logo-img" onerror="this.style.display='none'">
+                    <div class="cp-logo-fallback" style="display:none;">
+                      <div class="logo-circle">
+                        <span class="logo-text">RIT</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Institution Name -->
+                  <h1 class="cp-institution">Roland Institute of Technology</h1>
+                  
+                  <!-- Affiliation Text -->
+                  <p class="cp-affiliation">( Affiliated to Biju Pattnaik University of Technology, Odisha and approved<br>by AICTE, New Delhi. It is ISO 9001:2015 certified )</p>
+                  
+                  <!-- Address -->
+                  <p class="cp-address">Surya Vihar , Berhampur , Ganjam , Odisha - 761008</p>
+                  
+                  <!-- Program Name -->
+                  <h2 class="cp-program">Master of Business Administration</h2>
+                  
+                  <!-- Batch Year -->
+                  <p class="cp-batch">MBA 2025-27</p>
+                  
+                  <!-- Decorative Divider -->
+                  <div class="cp-divider">
+                    <svg width="200" height="20" viewBox="0 0 200 20">
+                      <line x1="0" y1="10" x2="85" y2="10" stroke="#0d4a7a" stroke-width="1"/>
+                      <g transform="translate(100,10)">
+                        <line x1="0" y1="-6" x2="0" y2="6" stroke="#0d4a7a" stroke-width="1"/>
+                        <line x1="-5" y1="-5" x2="5" y2="5" stroke="#0d4a7a" stroke-width="1"/>
+                        <line x1="-5" y1="5" x2="5" y2="-5" stroke="#0d4a7a" stroke-width="1"/>
+                        <circle cx="0" cy="0" r="2" fill="#0d4a7a"/>
+                      </g>
+                      <line x1="115" y1="10" x2="200" y2="10" stroke="#0d4a7a" stroke-width="1"/>
+                    </svg>
+                  </div>
+                  
+                  <!-- Assignment Title -->
+                  <h3 class="cp-assignment">Assignment</h3>
+                  
+                  <!-- Subject Name -->
+                  <p class="cp-subject-name" id="cpSubjectName">Subject Name</p>
+                  
+                  <!-- Course Code -->
+                  <p class="cp-course-code">Course Code : <span id="cpCourseCode">______</span></p>
+                  
+                  <!-- Lower Section - Prepared by / Presented to -->
+                  <div class="cp-lower-section">
+                    <div class="cp-prepared">
+                      <p class="cp-label">Prepared by:</p>
+                      <p class="cp-value" id="cpStudentName">_______________________</p>
+                      <p class="cp-label mt-4">Registration No :</p>
+                      <p class="cp-value" id="cpRegNo">_______________________</p>
+                    </div>
+                    
+                    <div class="cp-center-divider">
+                      <svg width="20" height="180" viewBox="0 0 20 180">
+                        <line x1="10" y1="0" x2="10" y2="75" stroke="#0d4a7a" stroke-width="1"/>
+                        <g transform="translate(10,90)">
+                          <line x1="0" y1="-8" x2="0" y2="8" stroke="#0d4a7a" stroke-width="1"/>
+                          <line x1="-6" y1="-6" x2="6" y2="6" stroke="#0d4a7a" stroke-width="1"/>
+                          <line x1="-6" y1="6" x2="6" y2="-6" stroke="#0d4a7a" stroke-width="1"/>
+                          <circle cx="0" cy="0" r="2" fill="#0d4a7a"/>
+                        </g>
+                        <line x1="10" y1="105" x2="10" y2="180" stroke="#0d4a7a" stroke-width="1"/>
+                      </svg>
+                    </div>
+                    
+                    <div class="cp-presented">
+                      <p class="cp-label">Presented to:</p>
+                      <p class="cp-value" id="cpLecturerName">_______________________</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
