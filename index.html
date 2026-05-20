@@ -12,6 +12,9 @@
 
   <!-- html2canvas -->
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <!-- JSZip -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@95.4,300..700&display=swap" rel="stylesheet">
@@ -210,7 +213,8 @@ font-family: "Fredoka", sans-serif;
       </select>
 
       <button id="generate" class="btn btn-primary w-100 mb-2">Generate</button>
-      <button id="download" class="btn btn-success w-100">Download PNG</button>
+      <button id="download" class="btn btn-success w-100 mb-2">Download PNG</button>
+      <button id="downloadAll" class="btn btn-warning w-100">Download All ZIP</button>
     </div>
 
     <!-- Preview -->
@@ -242,7 +246,7 @@ font-family: "Fredoka", sans-serif;
 
 <footer class="site-footer">
   Design and Developed by
-  <a href="https://github.com/gyaneswarsahu2025-max" target="_blank" rel="noopener noreferrer">Mr. Gyaneswar Sahu</a>
+  <a href="https://www.linkedin.com/in/gyaneswar-sahu-b176a4263" target="_blank" rel="noopener noreferrer">Mr. Gyaneswar Sahu</a>
 </footer>
 </div>
 
@@ -305,6 +309,14 @@ const fallbackSubjects = [
     $("#lecturerText").text(selectedSubject ? selectedSubject.lecturer : "Lecturer Name");
   }
 
+  function renderSubject(subject) {
+    $("#nameText").text($("#name").val() || "Your Name");
+    $("#regNoText").text($("#regNo").val() || "Registration Number");
+    $("#courseText").text(subject ? subject.name : "Course Name");
+    $("#codeText").text(subject ? subject.code : "Code");
+    $("#lecturerText").text(subject ? subject.lecturer : "Lecturer Name");
+  }
+
   function makeSafeFilePart(value, fallback) {
     const cleanedValue = (value || "")
       .trim()
@@ -319,6 +331,16 @@ const fallbackSubjects = [
     $("#regNo").val("");
     $("#subjectSelect").val("");
     updatePreview();
+  }
+
+  function canvasToBlob(canvas) {
+    return new Promise((resolve) => {
+      canvas.toBlob(resolve, "image/png");
+    });
+  }
+
+  function waitForPreviewPaint() {
+    return new Promise((resolve) => requestAnimationFrame(resolve));
   }
 
   $("#name, #regNo").on("input", function () {
@@ -348,6 +370,61 @@ const fallbackSubjects = [
       link.href = canvas.toDataURL("image/png");
       link.click();
     });
+  });
+
+  $("#downloadAll").click(async function () {
+    if (!$("#name").val().trim() || !$("#regNo").val().trim()) {
+      alert("Please enter Student Name and Registration Number before downloading all cover pages.");
+      return;
+    }
+
+    if (!subjects.length) {
+      alert("No subjects found to download.");
+      return;
+    }
+
+    if (typeof JSZip === "undefined") {
+      alert("ZIP download library is still loading. Please check your internet connection and try again.");
+      return;
+    }
+
+    const $button = $("#downloadAll");
+    const originalText = $button.text();
+    const originalSelectedSubject = $("#subjectSelect").val();
+    const regNo = makeSafeFilePart($("#regNo").val(), "RegistrationNumber");
+    const studentName = makeSafeFilePart($("#name").val(), "StudentName");
+    const zip = new JSZip();
+
+    $button.prop("disabled", true).text("Preparing ZIP...");
+
+    try {
+      for (const [index, subject] of subjects.entries()) {
+        $button.text(`Preparing ${index + 1}/${subjects.length}...`);
+        renderSubject(subject);
+        await waitForPreviewPaint();
+
+        const canvas = await html2canvas(document.querySelector("#coverPage"));
+        const blob = await canvasToBlob(canvas);
+        const subjectName = makeSafeFilePart(subject.name, "SubjectName");
+
+        zip.file(`${regNo} - ${subjectName}.png`, blob);
+      }
+
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      const link = document.createElement("a");
+      const zipUrl = URL.createObjectURL(zipBlob);
+
+      link.download = `${regNo} - ${studentName} - Cover Pages.zip`;
+      link.href = zipUrl;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(zipUrl), 1000);
+    } catch (error) {
+      alert("Could not create the ZIP. Please try again.");
+    } finally {
+      $("#subjectSelect").val(originalSelectedSubject);
+      updatePreview();
+      $button.prop("disabled", false).text(originalText);
+    }
   });
 
   loadSubjects();
