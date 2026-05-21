@@ -53,8 +53,11 @@
       width: 800px;
       height: 1100px;
       margin: auto;
-      background: url('rit_4.png') no-repeat center/contain;
-      position: relative;
+background-image: url('rit_4.png');
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+background-color: #ffffff;      position: relative;
       padding: 50px;
       color: #000;
       font-family: 'Times New Roman', serif;
@@ -364,8 +367,12 @@ const fallbackSubjects = [
       "SubjectName"
     );
 
-    html2canvas(document.querySelector("#coverPage")).then(canvas => {
-      let link = document.createElement("a");
+html2canvas(document.querySelector("#coverPage"), {
+    useCORS: true,
+    allowTaint: true,
+    backgroundColor: null,
+    scale: 2
+}).then(canvas => {      let link = document.createElement("a");
       link.download = `${regNo} - ${subjectName}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
